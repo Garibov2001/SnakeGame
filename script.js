@@ -1,7 +1,11 @@
 
 
-var left_value = 30; //Default value
-var top_value = 30; //Default value
+var left_value = 60; //Default value
+var top_value = 60; //Default value
+
+var target_top_value = 90 //Default value
+var target_left_value = 90 //Default Value
+
 var interval_id = 0 //Default value
 var interval_time = 100 //0.1 second
 var check_interval_id = 0
@@ -27,6 +31,13 @@ document.addEventListener("keydown", event => {
   });
 
 
+function GenerateRandomPosition(min, max) 
+{  
+    min = Math.ceil(min);
+    max = Math.floor(max + 1); // +1 maxi da daxil etmesi ucundur
+    return Math.floor(Math.random() * (max - min)) + min; 
+}  
+
 // Check current position
 function CheckCurrentPosition()
 {
@@ -38,9 +49,29 @@ function CheckCurrentPosition()
     {
         score += 1
         $('#score').html(score)
+
+        target_top_value = GenerateRandomPosition(30, 540)
+
+        while(!((target_top_value %30 == 0) && (target_top_value != top_value)))
+        {
+            target_top_value = GenerateRandomPosition(30, 540)
+        }
+        
+        target_left_value = GenerateRandomPosition(30, 1290)
+
+        while(!((target_left_value %30 == 0) && (target_left_value != left_value)))
+        {
+            target_left_value = GenerateRandomPosition(30, 1290)
+        }
+
+        // console.log(target_left_value)
+        // console.log(target_top_value)
+
+        $('#target-box').css("top", `${target_top_value}px`);  
+        $('#target-box').css("left", `${target_left_value}px`);  
+
     }
 } 
-
 
 function IsBoxOnTarget()
 {
@@ -55,12 +86,17 @@ function IsBoxOnTarget()
 function RestartGame()
 {
     clearInterval(interval_id);
-    left_value = 30; //Default value
-    top_value = 30; //Default value
+    left_value = 60; //Default value
+    top_value = 60; //Default value
     score = 0
     $('#score').html(score)
     $('#snake-box').css("left", `${left_value}px`);  
     $('#snake-box').css("top", `${top_value}px`);  
+    
+    target_top_value = 90 //Default value
+    target_left_value = 90 //Default Value
+    $('#target-box').css("top", `${target_top_value}px`);  
+    $('#target-box').css("left", `${target_left_value}px`);  
     alert("You losed the game..")
 }
 
