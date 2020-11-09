@@ -5,7 +5,7 @@ console.log(window.innerWidth)
 var left_value = 0; //Default value
 var top_value = 0; //Default value
 var interval_id = 0 //Default value
-var interval_time = 100 //0.1 sec
+var interval_time = 100 //0.1 second
 
 
 document.addEventListener("keydown", event => {
