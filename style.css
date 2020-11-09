@@ -1,0 +1,26 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+#game-area{
+    width: 1290px; /* 43 block */  /* 1 block = 1 snake-box size (30px) */
+    height: 540px; /* 18 block */  
+    background-color: #89A669;
+    border-left: 30px solid #586944;
+    border-right: 30px solid #586944;
+    border-top: 30px solid #586944;
+}
+
+
+#snake-box{
+    position: absolute;
+    top: 30px;
+    left: 30px;   
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    /* transition: all 0.05s; */
+}
